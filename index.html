@@ -313,9 +313,10 @@
       }
 
       $(document).ready(function() {
-        allEvents.test = 'test';
-        console.log(allEvents);
-        addEvent(0);
+        MP.api.topEvents().done(function(results) {
+         console.log(results); 
+         addEvent(0);
+        }
       });
       $('#add').on('click', function() {
         var numEvents = $('.event_select').length;
