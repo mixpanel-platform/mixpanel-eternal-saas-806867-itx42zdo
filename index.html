@@ -287,12 +287,13 @@
     </div>
     <script>
     // Events to exclude (step 1):
-      var exclusion_events = ["$campaign_delivery", "$experiment_started"];
+      var exclusion_events = ["Event 1", "Event 2"];
       
-      
+      // allEvents variable (step 2)
       var allEvents = {
         items:[]
       };
+      
       var event_list = [];
       var path_length = 3;
       var funnel_select = [];
@@ -307,9 +308,10 @@
         if (i > 0) {
           $('<div class="right-arrow"></div>').insertBefore($add);
         }
-        //var eventSelect = $('<div class="event_select inline block" id="' + i + '"></div>').insertBefore($add).MPEventSelect();
-        // step 2
+        
+        // step 3
         var eventSelect = $('<div class="event_select inline block" id="' + i + '"></div>').insertBefore($add).MPSelect(allEvents);
+        
       }
       function resetEvents() {
         // clear event dropdowns
@@ -332,6 +334,7 @@
          addEvent(0);
         });
       });
+      
       $('#add').on('click', function() {
         var numEvents = $('.event_select').length;
         addEvent(numEvents);
