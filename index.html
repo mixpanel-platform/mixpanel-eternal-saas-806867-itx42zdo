@@ -288,7 +288,9 @@
     <script>
     // Events to exclude:
       var exclusion_events = [];
-      var allEvents = [];
+      var allEvents = {
+        items:[]
+      };
   
       var event_list = [];
       var path_length = 3;
@@ -318,7 +320,7 @@
         MP.api.topEvents().done(function(results) {
          _.each(results.values(), function(event){
            if(!(exclusion_events.includes(event))){
-             allEvents.push({
+             allEvents.items.push({
                value:event,
                label:event
              });
