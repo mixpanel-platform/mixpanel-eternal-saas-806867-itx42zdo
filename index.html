@@ -299,6 +299,8 @@
       var $add = $('#events').find('#add');
       
       function addEvent(i) {
+        //NOLANDEBUG
+        console.log(allEvents);
         if (i > 0) {
           $('<div class="right-arrow"></div>').insertBefore($add);
         }
