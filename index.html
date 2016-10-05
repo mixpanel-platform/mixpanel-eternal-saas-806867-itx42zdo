@@ -315,7 +315,9 @@
       $(document).ready(function() {
         MP.api.topEvents().done(function(results) {
          _.each(results.values(), function(event){
-           console.log(event);
+           if(!(exclusion_events.includes(event))){
+             allEvents[event] = event;
+           }
          }); 
          addEvent(0);
         });
