@@ -286,8 +286,8 @@
       </div>
     </div>
     <script>
-    // Events to exclude:
-      var exclusion_events = [];
+    // Events to exclude (step 1):
+      var exclusion_events = ["$campaign_delivery"];
       
       
       var allEvents = {
@@ -308,6 +308,7 @@
           $('<div class="right-arrow"></div>').insertBefore($add);
         }
         //var eventSelect = $('<div class="event_select inline block" id="' + i + '"></div>').insertBefore($add).MPEventSelect();
+        // step 2
         var eventSelect = $('<div class="event_select inline block" id="' + i + '"></div>').insertBefore($add).MPSelect(allEvents);
       }
       function resetEvents() {
@@ -318,6 +319,7 @@
       }
 
       $(document).ready(function() {
+        // step 3
         MP.api.topEvents().done(function(results) {
          _.each(results.values(), function(event){
            if(!(exclusion_events.includes(event))){
@@ -351,16 +353,12 @@
       });
       $('#run').on('click', function() {
         var events = [];
-        // Nolan removed
-        // for (var i = 0, j = $('.event_select').length; i < j; i++) {
-        //   var eventName = $($('.event_select')[i]).val();
-        //   if (eventName != null) {
-        //     events.push(eventName);
-        //   }
-        // }
-        _.each(allEvents, function(event){
-          events.push(event);
-        })
+        for (var i = 0, j = $('.event_select').length; i < j; i++) {
+          var eventName = $($('.event_select')[i]).val();
+          if (eventName != null) {
+            events.push(eventName);
+          }
+        }
         event_list = events;
         //NOLANDEBUG
         console.log(event_list);
