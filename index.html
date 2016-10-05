@@ -288,10 +288,11 @@
     <script>
     // Events to exclude:
       var exclusion_events = [];
+      
+      
       var allEvents = {
         items:[]
       };
-  
       var event_list = [];
       var path_length = 3;
       var funnel_select = [];
@@ -350,17 +351,21 @@
       });
       $('#run').on('click', function() {
         var events = [];
-        for (var i = 0, j = $('.event_select').length; i < j; i++) {
-          var eventName = $($('.event_select')[i]).val();
-          if (eventName != null) {
-            events.push(eventName);
-          }
-        }
+        // Nolan removed
+        // for (var i = 0, j = $('.event_select').length; i < j; i++) {
+        //   var eventName = $($('.event_select')[i]).val();
+        //   if (eventName != null) {
+        //     events.push(eventName);
+        //   }
+        // }
+        _.each(allEvents, function(event){
+          events.push(event);
+        })
         event_list = events;
         //NOLANDEBUG
         console.log(event_list);
         // event list should be ["Exact Event Name 1", "Exact Event Name 2", ...]
-        runQuery();
+        //runQuery();
       });
       $('#funnel-query').on('click', function() {
         var newEvents = [];
