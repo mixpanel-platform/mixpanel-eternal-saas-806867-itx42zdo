@@ -314,7 +314,7 @@
 
       $(document).ready(function() {
         MP.api.topEvents().done(function(results) {
-         console.log(results); 
+         console.log(results.values()); 
          addEvent(0);
         });
       });
