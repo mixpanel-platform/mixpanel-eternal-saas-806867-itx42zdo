@@ -302,8 +302,8 @@
         if (i > 0) {
           $('<div class="right-arrow"></div>').insertBefore($add);
         }
-        var eventSelect = $('<div class="event_select inline block" id="' + i + '"></div>').insertBefore($add).MPEventSelect();
-        //var eventSelect = $('<div class="event_select inline block" id="' + i + '"></div>').insertBefore($add).MPSelect(allEvents);
+        //var eventSelect = $('<div class="event_select inline block" id="' + i + '"></div>').insertBefore($add).MPEventSelect();
+        var eventSelect = $('<div class="event_select inline block" id="' + i + '"></div>').insertBefore($add).MPSelect(allEvents);
       }
       function resetEvents() {
         // clear event dropdowns
@@ -315,7 +315,7 @@
       $(document).ready(function() {
         MP.api.topEvents().done(function(results) {
          _.each(results.values(), function(event){
-           var b = 0;
+           console.log(event);
          }); 
          addEvent(0);
         });
@@ -350,6 +350,7 @@
         event_list = events;
         //NOLANDEBUG
         console.log(event_list);
+        // event list should be ["Exact Event Name 1", "Exact Event Name 2", ...]
         runQuery();
       });
       $('#funnel-query').on('click', function() {
